@@ -1,5 +1,5 @@
 const request = require('request');
-const readline = require('./readline.js');
+const readline = require('./utils/readline.js');
 
 const getDarksky = (address, callback) => {
   const darksky_accessToken = 'a1abd6d2c4c77d88dffa69c7a0825a37';

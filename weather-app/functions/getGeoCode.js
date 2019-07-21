@@ -1,5 +1,6 @@
 const request = require('request');
-const readline = require('./readline.js');
+const chalk = require('chalk');
+const readline = require('./utils/readline.js');
 
 const getGeoCode = (address, callback) => {
   const mapbox_accessToken = 'pk.eyJ1IjoiYXVndXN0bmVqdWRuZSIsImEiOiJjankxNml4aDUwYXJuM2pteDU4N2VmeDNuIn0.RDelID7nCOhCfcQ83bCZVQ';
@@ -23,13 +24,8 @@ const getGeoCode = (address, callback) => {
     });
     readline.question('\nPick Location: ', choice => {
       choice = parseInt(choice - 1);
-      // console.log('========================');
-      // console.log('getGeoCode.js');
-      // console.log('choice');
-      // console.log(choice);
-      // console.log('========================');
       if (isNaN(choice) || choice > response.body.features.length - 1 || choice < 0) {
-        console.log('Invalid choice');
+        console.log(chalk.red.bgWhite('Invalid choice'));
         readline.close();
         return;
       }

@@ -1,6 +1,11 @@
 const getWeather = require('./functions/getWeather.js');
-const readline = require('./functions/utils/readline.js');
+const chalk = require('chalk');
 
-readline.question('Give me an address: ', choice => {
-  getWeather(choice);
-});
+const address = process.argv[2];
+
+if (!address) {
+  console.log(chalk.red.bgWhite(' Please provide an address '));
+  process.exit(1);
+}
+
+getWeather(process.argv[2]);
